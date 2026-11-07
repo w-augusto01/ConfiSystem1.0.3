@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane
+        xmlns:fx="http://javafx.com/fxml"
+        fx:controller="br.com.confisystem.controller.MenuController"
+        stylesheets="@styles.css"
+        prefWidth="1040" prefHeight="680">
+
+    <left>
+        <VBox styleClass="sidebar" prefWidth="240" BorderPane.alignment="TOP_LEFT">
+
+            <VBox styleClass="sidebar-brand" spacing="2">
+                <Label text="ConfiSystem" styleClass="sidebar-title"/>
+            </VBox>
+
+            <Separator styleClass="sidebar-separator"/>
+
+            <Label text="MÓDULOS" styleClass="sidebar-section-label"/>
+
+            <VBox spacing="0">
+                <Button text="Confinamento" styleClass="nav-button" onAction="#abrirConfinamento"/>
+                <Button fx:id="navFormulacao" text="Formulação de Ração" styleClass="nav-button" onAction="#abrirFormulacao"/>
+                <Button text="Ordem de Produção" styleClass="nav-button" onAction="#abrirOrdemProducao"/>
+                <Button fx:id="navCompras" text="Compras" styleClass="nav-button" onAction="#abrirCompras"/>
+                <Button fx:id="navMaterias" text="Matérias-Primas" styleClass="nav-button" onAction="#abrirMateriasPrimas"/>
+                <Button fx:id="navFornecedores" text="Fornecedores" styleClass="nav-button" onAction="#abrirFornecedores"/>
+            </VBox>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <Label fx:id="usuarioLabel" styleClass="sidebar-user"/>
+            <Button text="Sair" styleClass="nav-button" onAction="#sair"/>
+
+        </VBox>
+    </left>
+
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="dashboard-scroll">
+
+            <VBox styleClass="dashboard" spacing="28">
+
+                <VBox spacing="4">
+                    <Label text="Painel" styleClass="dashboard-title"/>
+                </VBox>
+
+                <FlowPane hgap="20" vgap="20">
+
+                    <VBox styleClass="module-card" prefWidth="260" spacing="8"
+                          onMouseClicked="#abrirConfinamento">
+                        <Label text="OPERAÇÃO" styleClass="module-card-tag"/>
+                        <Label text="Confinamento" styleClass="module-card-title"/>
+                        <Label text="Divisão de animais por piquetes"
+                               styleClass="module-card-desc" wrapText="true"/>
+                    </VBox>
+
+                    <VBox fx:id="cardFormulacao" styleClass="module-card" prefWidth="260" spacing="8"
+                          onMouseClicked="#abrirFormulacao">
+                        <Label text="FORMULAÇÃO" styleClass="module-card-tag"/>
+                        <Label text="Formulação de Ração" styleClass="module-card-title"/>
+                        <Label text="Montagem e edição de fórmulas"
+                               styleClass="module-card-desc" wrapText="true"/>
+                    </VBox>
+
+                    <VBox styleClass="module-card" prefWidth="260" spacing="8"
+                          onMouseClicked="#abrirOrdemProducao">
+                        <Label text="OPERAÇÃO" styleClass="module-card-tag"/>
+                        <Label text="Ordem de Produção" styleClass="module-card-title"/>
+                        <Label text="Gere e imprima a ordem de uma fórmula já cadastrada, e finalize a produção."
+                               styleClass="module-card-desc" wrapText="true"/>
+                    </VBox>
+
+                    <VBox fx:id="cardFornecedores" styleClass="module-card" prefWidth="260" spacing="8"
+                          onMouseClicked="#abrirFornecedores">
+                        <Label text="CADASTRO" styleClass="module-card-tag"/>
+                        <Label text="Fornecedores" styleClass="module-card-title"/>
+                        <Label text="Consulte e cadastre fornecedores."
+                               styleClass="module-card-desc" wrapText="true"/>
+                    </VBox>
+
+                    <VBox fx:id="cardMaterias" styleClass="module-card" prefWidth="260" spacing="8"
+                          onMouseClicked="#abrirMateriasPrimas">
+                        <Label text="ESTOQUE" styleClass="module-card-tag"/>
+                        <Label text="Matérias-Primas" styleClass="module-card-title"/>
+                        <Label text="Cadastre os insumos, suas categorias,  consulte saldo e preço."
+                               styleClass="module-card-desc" wrapText="true"/>
+                    </VBox>
+
+                    <VBox fx:id="cardCompras" styleClass="module-card" prefWidth="260" spacing="8"
+                          onMouseClicked="#abrirCompras">
+                        <Label text="ENTRADA NF-e" styleClass="module-card-tag"/>
+                        <Label text="Compras" styleClass="module-card-title"/>
+                        <Label text="Dê entrada nos insumos recebidos e acompanhe o histórico de notas."
+                               styleClass="module-card-desc" wrapText="true"/>
+                    </VBox>
+
+                </FlowPane>
+
+            </VBox>
+
+        </ScrollPane>
+    </center>
+
+</BorderPane>

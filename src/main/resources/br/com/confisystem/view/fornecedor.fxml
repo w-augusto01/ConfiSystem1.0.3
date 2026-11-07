@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane
+        xmlns:fx="http://javafx.com/fxml"
+        fx:controller="br.com.confisystem.controller.FornecedorController"
+        stylesheets="@styles.css"
+        prefWidth="960" prefHeight="680">
+
+    <top>
+        <VBox styleClass="page-header">
+            <Label text="Fornecedores" styleClass="page-header-title"/>
+        </VBox>
+    </top>
+
+    <center>
+
+        <VBox styleClass="page-content" spacing="18">
+
+            <GridPane hgap="15" vgap="12">
+
+                <Label text="Nome:" styleClass="form-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtNome"
+                           promptText="Digite o nome"
+                           GridPane.rowIndex="0"
+                           GridPane.columnIndex="1"/>
+
+                <Label text="CNPJ:" styleClass="form-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtCnpj"
+                           promptText="00.000.000/0000-00"
+                           GridPane.rowIndex="1"
+                           GridPane.columnIndex="1"/>
+
+                <Label text="Telefone:" styleClass="form-label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtTelefone"
+                           GridPane.rowIndex="2"
+                           GridPane.columnIndex="1"/>
+
+                <Label text="Email:" styleClass="form-label" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtEmail"
+                           GridPane.rowIndex="3"
+                           GridPane.columnIndex="1"/>
+
+                <Label text="Endereço:" styleClass="form-label" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtEndereco"
+                           GridPane.rowIndex="4"
+                           GridPane.columnIndex="1"/>
+
+                <Label text="Tipo:" styleClass="form-label" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="cbTipo"
+                          prefWidth="220"
+                          GridPane.rowIndex="5"
+                          GridPane.columnIndex="1"/>
+
+            </GridPane>
+
+            <HBox spacing="12">
+
+                <Button
+                        fx:id="btnSalvar"
+                        text="Salvar"
+                        styleClass="btn-primary"
+                        onAction="#salvar"/>
+
+                <Button
+                        fx:id="btnLimpar"
+                        text="Limpar"
+                        styleClass="btn-secondary"
+                        onAction="#limpar"/>
+
+                <Button
+                        fx:id="btnDesativar"
+                        text="Desativar"
+                        styleClass="btn-danger"
+                        onAction="#desativarFornecedor"/>
+
+            </HBox>
+            <Separator/>
+
+            <HBox spacing="15" alignment="CENTER_LEFT">
+
+                <Label text="Pesquisar:" styleClass="form-label"/>
+
+                <TextField
+                        fx:id="txtPesquisar"
+                        promptText="Nome ou CNPJ"
+                        prefWidth="200"/>
+
+                <CheckBox
+                        fx:id="chkMostrarAtivos"
+                        text="Mostrar apenas ativos"
+                        selected="true"/>
+
+            </HBox>
+
+            <TableView fx:id="tabelaFornecedores"
+                onMouseClicked="#selecionarFornecedor"
+                prefHeight="300"
+                VBox.vgrow="ALWAYS">
+
+                <columns>
+
+                    <TableColumn fx:id="colId"
+                                 text="ID"
+                                 prefWidth="60"/>
+
+                    <TableColumn fx:id="colNome"
+                                 text="Nome"
+                                 prefWidth="220"/>
+
+                    <TableColumn fx:id="colCnpj"
+                                 text="CNPJ"
+                                 prefWidth="170"/>
+
+                    <TableColumn fx:id="colTelefone"
+                                 text="Telefone"
+                                 prefWidth="140"/>
+
+                    <TableColumn fx:id="colTipo"
+                                 text="Tipo"
+                                 prefWidth="120"/>
+
+                    <TableColumn fx:id="colAtivo"
+                                 text="Ativo"
+                                 prefWidth="80"/>
+
+                </columns>
+
+            </TableView>
+
+        </VBox>
+
+    </center>
+
+</BorderPane>

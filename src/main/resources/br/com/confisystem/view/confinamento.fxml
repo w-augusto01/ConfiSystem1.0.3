@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane
+        xmlns:fx="http://javafx.com/fxml"
+        fx:controller="br.com.confisystem.controller.ConfinamentoController"
+        stylesheets="@styles.css"
+        prefWidth="1280" prefHeight="820">
+
+    <top>
+        <VBox styleClass="page-header">
+            <HBox alignment="CENTER_LEFT" spacing="10">
+
+                <VBox spacing="2">
+                    <Label text="Confinamento" styleClass="page-header-title"/>
+                    <Label text="Distribuição de animais e controle de tratos por piquete"
+                           styleClass="page-header-subtitle"/>
+                </VBox>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <Button fx:id="btnMovimentarAnimais" text="Movimentar Animais"
+                        styleClass="btn-secondary" onAction="#movimentarAnimais"/>
+
+                <Button fx:id="btnNovoPiquete" text="Novo Piquete"
+                        styleClass="btn-secondary" onAction="#novoPiquete"/>
+
+                <Button fx:id="btnAlimentarPiquete" text="Alimentar Piquete"
+                        styleClass="btn-primary" onAction="#alimentarPiquete"/>
+
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+
+        <ScrollPane fitToWidth="true" styleClass="dashboard-scroll">
+
+            <VBox styleClass="page-content" spacing="24">
+
+                <HBox fx:id="kpiContainer" spacing="16">
+
+                    <VBox styleClass="kpi-card">
+                        <Label text="Total de Piquetes" styleClass="kpi-label"/>
+                        <Label fx:id="lblTotalPiquetes" text="0" styleClass="kpi-value"/>
+                    </VBox>
+
+                    <VBox styleClass="kpi-card">
+                        <Label text="Total de Animais" styleClass="kpi-label"/>
+                        <Label fx:id="lblTotalAnimais" text="0" styleClass="kpi-value"/>
+                    </VBox>
+
+                    <VBox styleClass="kpi-card">
+                        <Label text="Total do Último Trato" styleClass="kpi-label"/>
+                        <Label fx:id="lblTotalUltimoTrato" text="0 Kg" styleClass="kpi-value"/>
+                    </VBox>
+
+                    <VBox styleClass="kpi-card">
+                        <Label text="Consumo Médio Geral" styleClass="kpi-label"/>
+                        <Label fx:id="lblConsumoMedioGeral" text="- Kg/Dia" styleClass="kpi-value"/>
+                    </VBox>
+
+                </HBox>
+
+                <FlowPane fx:id="piquetesContainer" hgap="18" vgap="18"/>
+
+            </VBox>
+
+        </ScrollPane>
+
+    </center>
+
+</BorderPane>

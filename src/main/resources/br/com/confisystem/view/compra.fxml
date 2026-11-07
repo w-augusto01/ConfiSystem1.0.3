@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane
+        xmlns:fx="http://javafx.com/fxml"
+        fx:controller="br.com.confisystem.controller.CompraController"
+        stylesheets="@styles.css"
+        prefWidth="1000" prefHeight="760">
+
+    <top>
+        <VBox styleClass="page-header">
+            <HBox alignment="CENTER_LEFT" spacing="15">
+                <Label text="Compras" styleClass="page-header-title"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button fx:id="btnImportarXml" text="Importar XML da NF-e"
+                        styleClass="btn-primary" onAction="#importarXml"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+
+        <ScrollPane fitToWidth="true" styleClass="dashboard-scroll">
+
+            <VBox styleClass="page-content" spacing="18">
+
+
+                <Label text="Dados da Nota" styleClass="section-label"/>
+
+                <GridPane hgap="15" vgap="10">
+
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="120"/>
+                        <ColumnConstraints minWidth="220"/>
+                        <ColumnConstraints minWidth="110"/>
+                        <ColumnConstraints minWidth="150"/>
+                    </columnConstraints>
+
+                    <Label text="Fornecedor:" styleClass="form-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <ComboBox fx:id="cbFornecedor" prefWidth="260"
+                              GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                    <Label text="Nº da Nota:" styleClass="form-label" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                    <TextField fx:id="txtNumeroNota" promptText="Ex.: 000123"
+                               GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+                    <Label text="Data:" styleClass="form-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <DatePicker fx:id="dpData" prefWidth="180"
+                                GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                    <Label text="Frete:" styleClass="form-label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <TextField fx:id="txtFrete" promptText="0,00"
+                               GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                    <Label text="Seguro:" styleClass="form-label" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+                    <TextField fx:id="txtSeguro" promptText="0,00"
+                               GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+
+                    <Label text="Outras despesas:" styleClass="form-label" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                    <TextField fx:id="txtOutrasDespesas" promptText="0,00"
+                               GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                    <Label text="Desconto:" styleClass="form-label" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
+                    <TextField fx:id="txtDesconto" promptText="0,00"
+                               GridPane.rowIndex="3" GridPane.columnIndex="3"/>
+
+                </GridPane>
+
+                <Separator/>
+
+
+                <Label text="Adicionar Item" styleClass="section-label"/>
+
+                <HBox spacing="12" alignment="CENTER_LEFT">
+
+                    <Label text="Matéria-prima:" styleClass="form-label"/>
+                    <ComboBox fx:id="cbMateriaPrima" prefWidth="220"/>
+
+                    <Label text="Quantidade:" styleClass="form-label"/>
+                    <TextField fx:id="txtQuantidade" promptText="0,000" prefWidth="100"/>
+
+                    <Label text="Valor do produto (R$):" styleClass="form-label"/>
+                    <TextField fx:id="txtValorProduto" promptText="0,00" prefWidth="110"/>
+
+                    <Button fx:id="btnAdicionarItem" text="Adicionar Item"
+                            styleClass="btn-primary" onAction="#adicionarItem"/>
+
+                    <Button fx:id="btnRemoverItem" text="Remover Item"
+                            styleClass="btn-danger" onAction="#removerItem"/>
+
+                </HBox>
+
+
+                <TableView fx:id="tabelaItens" prefHeight="200">
+
+                    <columns>
+
+                        <TableColumn fx:id="colItemMateriaPrima" text="Matéria-prima" prefWidth="200"/>
+                        <TableColumn fx:id="colItemQuantidade" text="Quantidade" prefWidth="110"/>
+                        <TableColumn fx:id="colItemValorProduto" text="Valor Produto (R$)" prefWidth="140"/>
+                        <TableColumn fx:id="colItemDespesasRateadas" text="Despesas Rateadas (R$)" prefWidth="160"/>
+                        <TableColumn fx:id="colItemCustoFinal" text="Custo Final (R$)" prefWidth="130"/>
+                        <TableColumn fx:id="colItemCustoKg" text="Custo / KG (R$)" prefWidth="130"/>
+                        <TableColumn fx:id="colItemOrigem" text="Origem (nota)" prefWidth="140"/>
+
+                    </columns>
+
+                </TableView>
+
+
+                <HBox spacing="30" alignment="CENTER_RIGHT">
+
+                    <HBox spacing="8">
+                        <Label text="Valor dos Produtos:" styleClass="form-label"/>
+                        <Label fx:id="lblValorProdutos" text="0,00"/>
+                    </HBox>
+
+                    <HBox spacing="8">
+                        <Label text="Valor Total da Nota:" styleClass="form-label"/>
+                        <Label fx:id="lblValorNota" text="0,00" style="-fx-font-size:15px; -fx-font-weight: 600;"/>
+                    </HBox>
+
+                </HBox>
+
+                <HBox spacing="12">
+
+                    <Button fx:id="btnSalvarCompra" text="Salvar Compra"
+                            styleClass="btn-primary"
+                            onAction="#salvarCompra"/>
+
+                    <Button fx:id="btnLimpar" text="Limpar" styleClass="btn-secondary" onAction="#limpar"/>
+
+                </HBox>
+
+                <Separator/>
+
+
+                <Label text="Compras Lançadas" styleClass="section-label"/>
+
+                <TableView fx:id="tabelaCompras" prefHeight="200">
+
+                    <columns>
+
+                        <TableColumn fx:id="colCompraId" text="ID" prefWidth="60"/>
+                        <TableColumn fx:id="colCompraFornecedor" text="Fornecedor" prefWidth="220"/>
+                        <TableColumn fx:id="colCompraNumeroNota" text="Nº Nota" prefWidth="100"/>
+                        <TableColumn fx:id="colCompraData" text="Data" prefWidth="100"/>
+                        <TableColumn fx:id="colCompraValorNota" text="Valor da Nota (R$)" prefWidth="150"/>
+
+                    </columns>
+
+                </TableView>
+
+            </VBox>
+
+        </ScrollPane>
+
+    </center>
+
+</BorderPane>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane
+        xmlns:fx="http://javafx.com/fxml"
+        fx:controller="br.com.confisystem.controller.OrdemProducaoController"
+        stylesheets="@styles.css"
+        prefWidth="1080" prefHeight="780">
+
+    <top>
+        <VBox styleClass="page-header">
+            <Label text="Ordem de Produção" styleClass="page-header-title"/>
+            <Label text="Selecione a ração já formulada e a quantidade a produzir"
+                   styleClass="page-header-subtitle"/>
+        </VBox>
+    </top>
+
+    <center>
+
+        <ScrollPane fitToWidth="true" styleClass="dashboard-scroll">
+
+            <VBox styleClass="page-content" spacing="18">
+
+                <Label text="Gerar Nova Ordem" styleClass="section-label"/>
+
+                <HBox spacing="12" alignment="CENTER_LEFT">
+
+                    <Label text="Ração (fórmula):" styleClass="form-label"/>
+                    <ComboBox fx:id="cbFormula" prefWidth="240"/>
+
+                    <Label text="Quantidade a produzir (Kg):" styleClass="form-label"/>
+                    <TextField fx:id="txtQuantidadeKg" promptText="Ex.: 1000" prefWidth="110"/>
+
+                    <Button fx:id="btnGerarOrdem" text="Gerar Ordem" styleClass="btn-primary" onAction="#gerarOrdem"/>
+
+                </HBox>
+
+                <Label fx:id="lblPreviaBatidas" text="" styleClass="info-label"/>
+
+                <Separator/>
+
+                <Label text="Ordens Lançadas" styleClass="section-label"/>
+
+                <TableView fx:id="tabelaOrdens" prefHeight="320">
+
+                    <columns>
+
+                        <TableColumn fx:id="colOrdemId" text="ID" prefWidth="50"/>
+                        <TableColumn fx:id="colOrdemFormula" text="Ração" prefWidth="200"/>
+                        <TableColumn fx:id="colOrdemQuantidade" text="Quantidade" prefWidth="110"/>
+                        <TableColumn fx:id="colOrdemBatidas" text="Batidas" prefWidth="80"/>
+                        <TableColumn fx:id="colOrdemDataCriacao" text="Criada em" prefWidth="100"/>
+                        <TableColumn fx:id="colOrdemStatus" text="Status" prefWidth="110"/>
+                        <TableColumn fx:id="colOrdemCusto" text="Custo Total" prefWidth="130"/>
+
+                    </columns>
+
+                </TableView>
+
+                <HBox spacing="12">
+                    <Button fx:id="btnVerImprimir" text="Ver / Imprimir Ordem" styleClass="btn-secondary" onAction="#verImprimir"/>
+                    <Button fx:id="btnCancelarOrdem" text="Cancelar Ordem" styleClass="btn-danger" onAction="#cancelarOrdem"/>
+                    <Button fx:id="btnFinalizar" text="Finalizar Ordem" styleClass="btn-primary" onAction="#finalizarOrdem"/>
+                </HBox>
+
+            </VBox>
+
+        </ScrollPane>
+
+    </center>
+
+</BorderPane>

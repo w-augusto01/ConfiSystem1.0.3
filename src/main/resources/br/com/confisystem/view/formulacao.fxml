@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane
+        xmlns:fx="http://javafx.com/fxml"
+        fx:controller="br.com.confisystem.controller.FormulacaoController"
+        stylesheets="@styles.css"
+        prefWidth="1280" prefHeight="820">
+
+    <top>
+        <VBox styleClass="page-header">
+            <Label text="Formulação de Ração" styleClass="page-header-title"/>
+            <Label text="Cadastre a receita "
+                   styleClass="page-header-subtitle"/>
+        </VBox>
+    </top>
+
+    <center>
+
+        <ScrollPane fitToWidth="true" styleClass="dashboard-scroll">
+
+            <HBox spacing="20" styleClass="page-content">
+
+                <VBox spacing="12" prefWidth="280" minWidth="280">
+
+                    <Label text="Fórmulas Cadastradas" styleClass="section-label"/>
+
+                    <VBox fx:id="listaFormulasContainer" spacing="12"/>
+
+                </VBox>
+
+                <Separator orientation="VERTICAL"/>
+
+
+                <VBox spacing="18" HBox.hgrow="ALWAYS">
+
+                    <Label fx:id="lblTituloFormulario" text="Nova Fórmula" styleClass="section-label"/>
+
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <Label text="Nome da Ração:" styleClass="form-label"/>
+                        <TextField fx:id="txtNomeFormula" promptText="Ex.: Ração Bovino 18%" prefWidth="260"/>
+                    </HBox>
+
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+
+                        <Label text="Matéria-prima:" styleClass="form-label"/>
+                        <ComboBox fx:id="cbMateriaPrima" prefWidth="220"/>
+
+                        <Label text="Quantidade (Kg):" styleClass="form-label"/>
+                        <TextField fx:id="txtQuantidadeKg" promptText="0,00" prefWidth="90"/>
+
+                        <Button fx:id="btnAdicionarItem" text="Adicionar" styleClass="btn-primary" onAction="#adicionarItem"/>
+                        <Button fx:id="btnRemoverItem" text="Remover" styleClass="btn-danger" onAction="#removerItem"/>
+
+                    </HBox>
+
+                    <TableView fx:id="tabelaItens" prefHeight="220">
+
+                        <columns>
+
+                            <TableColumn fx:id="colItemMateriaPrima" text="Matéria-Prima" prefWidth="220"/>
+                            <TableColumn fx:id="colItemQuantidade" text="Quantidade (Kg)" prefWidth="130"/>
+                            <TableColumn fx:id="colItemPercentual" text="Percentual" prefWidth="110"/>
+                            <TableColumn fx:id="colItemCustoUnitario" text="Custo Unit. (R$/Kg)" prefWidth="150"/>
+                            <TableColumn fx:id="colItemCusto" text="Custo Estimado" prefWidth="160"/>
+
+                        </columns>
+
+                    </TableView>
+
+                    <HBox spacing="30" alignment="CENTER_LEFT">
+
+                        <VBox spacing="2">
+                            <Label text="Lote de Referência" styleClass="info-label"/>
+                            <Label fx:id="lblLote" text="1.000 Kg" styleClass="info-value"/>
+                        </VBox>
+
+                        <VBox spacing="2">
+                            <Label text="Percentual" styleClass="info-label"/>
+                            <Label fx:id="lblPercentualTotal" text="0 %" styleClass="info-value"/>
+                        </VBox>
+
+                        <VBox spacing="2">
+                            <Label text="Total Utilizado" styleClass="info-label"/>
+                            <Label fx:id="lblQuantidadeTotal" text="0 Kg" styleClass="info-value"/>
+                        </VBox>
+
+                        <VBox spacing="2">
+                            <Label text="Faltando" styleClass="info-label"/>
+                            <Label fx:id="lblFaltando" text="1.000 Kg" styleClass="info-value"/>
+                        </VBox>
+
+                        <VBox spacing="2">
+                            <Label text="Custo Estimado (R$)" styleClass="info-label"/>
+                            <Label fx:id="lblCustoTotal" text="0,00" styleClass="info-value"/>
+                        </VBox>
+
+                    </HBox>
+
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <Label text="Observação:" styleClass="form-label"/>
+                        <TextField fx:id="txtObservacao" promptText="Opcional" prefWidth="320"/>
+                    </HBox>
+
+                    <HBox spacing="12">
+                        <Button fx:id="btnSalvarFormula" text="Salvar Fórmula"
+                                styleClass="btn-primary" onAction="#salvarFormula"/>
+                        <Button fx:id="btnLimpar" text="Limpar" styleClass="btn-secondary" onAction="#limpar"/>
+                        <Button fx:id="btnCancelarEdicao" text="Cancelar Edição" styleClass="btn-danger"
+                                onAction="#cancelarEdicao" visible="false" managed="false"/>
+                        <Button fx:id="btnExcluirFormula" text="Excluir Fórmula" styleClass="btn-danger"
+                                onAction="#excluirFormula" visible="false" managed="false"/>
+                    </HBox>
+
+                </VBox>
+
+            </HBox>
+
+        </ScrollPane>
+
+    </center>
+
+</BorderPane>

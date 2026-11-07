@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane
+        xmlns:fx="http://javafx.com/fxml"
+        fx:controller="br.com.confisystem.controller.MateriaPrimaController"
+        stylesheets="@styles.css"
+        prefWidth="1120" prefHeight="760">
+
+    <top>
+        <VBox styleClass="page-header" spacing="14">
+
+            <HBox alignment="CENTER_LEFT" spacing="12">
+                <VBox spacing="2" HBox.hgrow="ALWAYS">
+                    <Label text="Estoque de Matérias-Primas" styleClass="page-header-title"/>
+                           styleClass="login-hint"/>
+                </VBox>
+
+                <Button text="+ Cadastrar matéria-prima" styleClass="btn-primary"
+                        onAction="#novaMateriaPrima"/>
+            </HBox>
+
+        </VBox>
+    </top>
+
+    <center>
+
+        <ScrollPane fitToWidth="true" styleClass="dashboard-scroll">
+
+            <VBox styleClass="page-content" spacing="18">
+
+                <HBox spacing="15" alignment="CENTER_LEFT">
+
+                    <Label text="Pesquisar:" styleClass="form-label"/>
+
+                    <TextField
+                            fx:id="txtPesquisar"
+                            promptText="Nome"
+                            prefWidth="240"/>
+
+                    <CheckBox
+                            fx:id="chkMostrarAtivos"
+                            text="Mostrar apenas ativos"
+                            selected="true"/>
+
+                </HBox>
+
+                <HBox spacing="20" alignment="TOP_LEFT">
+
+                    <!-- Esquerda: um bloco (titulo + tabela de estoque) por categoria. -->
+                    <VBox fx:id="categoriasContainer" spacing="20" HBox.hgrow="ALWAYS"/>
+
+                    <!-- Direita: racoes produzidas (vindas da Formulacao + Ordens de Producao). -->
+                    <VBox fx:id="racoesContainer" spacing="20"
+                          prefWidth="470" minWidth="470" maxWidth="470"/>
+
+                </HBox>
+
+            </VBox>
+
+        </ScrollPane>
+
+    </center>
+
+</BorderPane>

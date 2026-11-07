@@ -1,0 +1,13 @@
+# Arquivos do IntelliJ
+.idea/
+*.iml
+
+# Arquivos gerados pelo Maven
+target/
+
+# Configurações locais e senhas
+.env
+.env.*
+
+# Logs
+*.log

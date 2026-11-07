@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane
+        xmlns:fx="http://javafx.com/fxml"
+        fx:controller="br.com.confisystem.controller.LoginController"
+        stylesheets="@styles.css"
+        styleClass="login-root"
+        prefWidth="520" prefHeight="560">
+
+    <VBox styleClass="login-card" alignment="TOP_LEFT" spacing="18"
+          maxWidth="400" maxHeight="-Infinity">
+
+        <VBox spacing="2">
+            <Label text="ConfiSystem" styleClass="login-title"/>
+            <Label text="Confinamento de Bovinos" styleClass="login-subtitle"/>
+        </VBox>
+
+        <Separator/>
+
+        <VBox spacing="6">
+            <Label text="Usuário" styleClass="form-label"/>
+            <ComboBox fx:id="usuarioCombo" maxWidth="Infinity"/>
+            <Label fx:id="dicaLabel" styleClass="login-hint" wrapText="true"/>
+        </VBox>
+
+        <VBox fx:id="senhaBox" spacing="6">
+            <Label text="Senha" styleClass="form-label"/>
+            <PasswordField fx:id="senhaField" promptText="Digite a senha do administrador"
+                           onAction="#entrar"/>
+        </VBox>
+
+        <Label fx:id="erroLabel" styleClass="login-error" wrapText="true"
+               visible="false" managed="false"/>
+
+        <Button fx:id="entrarButton" text="Entrar" styleClass="btn-primary"
+                maxWidth="Infinity" defaultButton="true" onAction="#entrar"/>
+
+    </VBox>
+
+</StackPane>

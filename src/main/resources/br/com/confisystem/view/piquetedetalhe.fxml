@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane
+        xmlns:fx="http://javafx.com/fxml"
+        fx:controller="br.com.confisystem.controller.PiqueteDetalheController"
+        stylesheets="@styles.css"
+        prefWidth="820" prefHeight="720">
+
+    <top>
+        <VBox styleClass="page-header">
+            <Label fx:id="lblTituloPiquete" text="Piquete" styleClass="page-header-title"/>
+        </VBox>
+    </top>
+
+    <center>
+
+        <ScrollPane fitToWidth="true" styleClass="dashboard-scroll">
+
+            <VBox styleClass="page-content" spacing="18">
+
+                <Label text="Editar Piquete" styleClass="section-label"/>
+
+                <GridPane hgap="15" vgap="10">
+
+                    <Label text="Nome:" styleClass="form-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <TextField fx:id="txtNome" prefWidth="260"
+                               GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                    <Label text="Quantidade de Animais:" styleClass="form-label"
+                           GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <TextField fx:id="txtQuantidadeAnimais" prefWidth="120"
+                               GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                </GridPane>
+
+                <Label text="Para chegada, retirada ou transferência de animais, use o botão &quot;Movimentar Animais&quot; no painel de Confinamento. Este campo serve apenas para corrigir a contagem."
+                       styleClass="info-label" wrapText="true"/>
+
+                <HBox spacing="12">
+                    <Button fx:id="btnSalvar" text="Salvar Alterações" styleClass="btn-primary" onAction="#salvar"/>
+                    <Button fx:id="btnDesativar" text="Desativar Piquete" styleClass="btn-danger" onAction="#desativar"/>
+                    <Button text="Fechar" styleClass="btn-secondary" onAction="#fechar"/>
+                </HBox>
+
+                <Separator/>
+
+                <Label text="Situação Atual" styleClass="section-label"/>
+
+                <GridPane hgap="30" vgap="6">
+
+                    <VBox spacing="2" GridPane.rowIndex="0" GridPane.columnIndex="0">
+                        <Label text="Ração Atual" styleClass="info-label"/>
+                        <Label fx:id="lblRacaoAtual" text="-" styleClass="info-value"/>
+                    </VBox>
+
+                    <VBox spacing="2" GridPane.rowIndex="0" GridPane.columnIndex="1">
+                        <Label text="Início da Dieta Atual" styleClass="info-label"/>
+                        <Label fx:id="lblInicioDieta" text="-" styleClass="info-value"/>
+                    </VBox>
+
+                    <VBox spacing="2" GridPane.rowIndex="0" GridPane.columnIndex="2">
+                        <Label text="Último Trato" styleClass="info-label"/>
+                        <Label fx:id="lblUltimoTrato" text="-" styleClass="info-value"/>
+                    </VBox>
+
+                </GridPane>
+
+                <VBox styleClass="ciclo-box">
+                    <Label fx:id="lblCicloTitulo" text="Último Ciclo" styleClass="ciclo-title"/>
+                    <Label fx:id="lblCicloRacao" text=""/>
+                    <Label fx:id="lblCicloPeriodo" text=""/>
+                    <Label fx:id="lblCicloConsumo" text=""/>
+                </VBox>
+
+                <Separator/>
+
+                <Label text="Histórico de Tratos" styleClass="section-label"/>
+
+                <TableView fx:id="tabelaHistorico" prefHeight="260">
+
+                    <columns>
+
+                        <TableColumn fx:id="colData" text="Data" prefWidth="100"/>
+                        <TableColumn fx:id="colRacao" text="Ração" prefWidth="180"/>
+                        <TableColumn fx:id="colQuantidade" text="Quantidade" prefWidth="120"/>
+                        <TableColumn fx:id="colSituacao" text="Duração do Ciclo" prefWidth="130"/>
+                        <TableColumn fx:id="colConsumoMedio" text="Consumo Médio" prefWidth="130"/>
+
+                    </columns>
+
+                </TableView>
+
+                <Separator/>
+
+                <Label text="Movimentação de Animais" styleClass="section-label"/>
+
+                <TableView fx:id="tabelaMovimentacoes" prefHeight="220">
+
+                    <columns>
+
+                        <TableColumn fx:id="colMovData" text="Data" prefWidth="100"/>
+                        <TableColumn fx:id="colMovMovimento" text="Movimentação" prefWidth="260"/>
+                        <TableColumn fx:id="colMovVariacao" text="Animais" prefWidth="90"/>
+                        <TableColumn fx:id="colMovObservacao" text="Observação" prefWidth="260"/>
+
+                    </columns>
+
+                </TableView>
+
+            </VBox>
+
+        </ScrollPane>
+
+    </center>
+
+</BorderPane>
